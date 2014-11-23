@@ -8,7 +8,10 @@ class mpgGlobals
 
 	var $Globals=array(
 		'MONERIS_PROTOCOL' => 'https',
-		'MONERIS_HOST' => 'esqa.moneris.com',
+		'MONERIS_HOST' => array(
+			'test' => 'esqa.moneris.com',
+			'prod' => 'es.moneris.com',
+		),
 		'MONERIS_PORT' =>'443',
 		'MONERIS_FILE' => '/gateway2/servlet/MpgRequest',
 		'API_VERSION'  =>'PHP - 2.5.6',
@@ -39,7 +42,7 @@ class mpgHttpsPost
 	var $curlResponse;
 	var $curlError;
 
-	function mpgHttpsPost($store_id,$api_token, $mpgRequestOBJ, $cacert_path = '')
+	function mpgHttpsPost($store_id,$api_token, $mpgRequestOBJ, $server = 'test', $cacert_path = '')
 	{
 
 		$this->store_id=$store_id;
@@ -54,7 +57,7 @@ class mpgHttpsPost
 		$gArray=$g->getGlobals();
 
 		$url=$gArray['MONERIS_PROTOCOL']."://".
-			$gArray['MONERIS_HOST'].":".
+			$gArray['MONERIS_HOST'][$server].":".
 			$gArray['MONERIS_PORT'].
 			$gArray['MONERIS_FILE'];
 
