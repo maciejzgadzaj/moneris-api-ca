@@ -636,8 +636,9 @@ function toXML()
 
 	for($i=0;$i < $txnTypeArrayLen ;$i++)
 	{
+		$value = (isset($txn[$txnTypeArray[$i]])) ? $txn[$txnTypeArray[$i]] : '';
 		$txnXMLString  .="<$txnTypeArray[$i]>"   //begin tag
-				.$txn[$txnTypeArray[$i]] // data
+				.$value // data
 				. "</$txnTypeArray[$i]>"; //end tag
 	}
 
@@ -669,8 +670,8 @@ function toXML()
 	}
 
 	$txnXMLString .="</$txnType>";
-	
-	$xmlString .=$txnXMLString;
+
+	$xmlString =$txnXMLString;
 
 	return $xmlString;
 
@@ -922,9 +923,11 @@ class mpgAvsInfo
 
 	function toXML()
 	{
+		$xmlString = '';
 		foreach($this->avsTemplate as $tag)
 		{
-			$xmlString .= "<$tag>". $this->params[$tag] ."</$tag>";
+			$value = (isset($this->params[$tag])) ? $this->params[$tag] : '';
+			$xmlString .= "<$tag>". $value ."</$tag>";
 		}
 
 		return "<avs_info>$xmlString</avs_info>";
@@ -947,6 +950,7 @@ class mpgCvdInfo
 
 	function toXML()
 	{
+		$xmlString = '';
 		foreach($this->cvdTemplate as $tag)
 		{
 			$xmlString .= "<$tag>". $this->params[$tag] ."</$tag>";
