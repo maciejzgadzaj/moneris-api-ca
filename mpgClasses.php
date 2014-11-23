@@ -37,7 +37,7 @@ class mpgHttpsPost
 	var $mpgRequest;
 	var $mpgResponse;
 
-	function mpgHttpsPost($store_id,$api_token, $mpgRequestOBJ)
+	function mpgHttpsPost($store_id,$api_token, $mpgRequestOBJ, $cacert_path = '')
 	{
 
 		$this->store_id=$store_id;
@@ -66,6 +66,9 @@ class mpgHttpsPost
 		curl_setopt($ch,CURLOPT_USERAGENT,$gArray['API_VERSION']);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, TRUE);
 
+		if (!empty($cacert_path)) {
+			curl_setopt($ch, CURLOPT_CAINFO, $cacert_path);
+		}
 
 		$response=curl_exec ($ch);
 
