@@ -88,7 +88,7 @@ class mpgHttpsPost
 
 		curl_close ($ch);
 
-		echo "RESPONSE = $response\n\n";
+		//echo "RESPONSE = $response\n\n";
 
 		if(!$response)
 		{
