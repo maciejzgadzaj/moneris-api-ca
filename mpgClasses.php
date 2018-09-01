@@ -642,7 +642,24 @@ class mpgRequest {
       'total_num_recurs',
       'hold',
       'terminate'
-    )
+    ),
+    'res_add_cc' => array('cust_id','phone','email','note','pan','expdate','crypt_type'),
+    'res_add_token' => array('data_key','cust_id','phone','email','note','expdate','crypt_type'),
+    'res_temp_add' => array('pan','expdate','crypt_type','duration'),
+    'res_tokenize_cc' => array('order_id','txn_number','cust_id','phone','email','note'),
+    'res_update_cc' => array('data_key','cust_id','phone','email','note','pan','expdate','crypt_type'),
+    'res_delete' => array('data_key'),
+    'res_lookup_full' => array('data_key'),
+    'res_lookup_masked' => array('data_key'),
+    'res_get_expiring' => array(),
+    'res_purchase_cc' => array('data_key','order_id','cust_id','amount','crypt_type','dynamic_descriptor','expdate'),
+    'res_preauth_cc' => array('data_key','order_id','cust_id','amount','crypt_type','dynamic_descriptor','expdate'),
+    'res_ind_refund_cc' => array('data_key','order_id','cust_id','amount','crypt_type','dynamic_descriptor'),
+    'res_iscorporatecard' => array('data_key'),
+    'res_mpitxn' => array('data_key','xid','amount','MD','merchantUrl','accept','userAgent'),
+    'res_cavv_purchase_cc' => array('data_key','order_id','cust_id','amount','cavv','dynamic_descriptor','expdate'),
+    'res_cavv_preauth_cc' => array('data_key','order_id','cust_id','amount','cavv','dynamic_descriptor','expdate'),
+    'res_card_verification_cc' => array('data_key','order_id', 'crypt_type', 'expdate')
   );
 
   var $txnArray;
